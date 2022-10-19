@@ -6,10 +6,11 @@
 // <br />
 // <span id="text">Abracadabra!</span>
 
-let controlFont = document.getElementById("font-size-control");
-
-let text = document.getElementById("text");
-
-controlFont.oninput = function() {
-  text.style.fontSize = controlFont.value + "px";
+const refs = {
+  input: document.querySelector("#font-size-control"),
+  text: document.querySelector("#text"),
 };
+
+refs.input.addEventListener("input", function () {
+  refs.text.style.fontSize = `${this.value}px`;
+});
