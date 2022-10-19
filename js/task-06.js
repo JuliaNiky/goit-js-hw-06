@@ -1,4 +1,3 @@
-"use strict";
 // Напиши скрипт, який під час втрати фокусу на інпуті (подія blur), перевіряє його вміст щодо правильної кількості введених символів.
 
 // <input
@@ -24,21 +23,35 @@
 //   border-color: #f44336;
 // }
 
-let inputVal = document.getElementById("validation-input");
+// // let inputVal = document.getElementById("validation-input");
 
-let totalLenght = inputVal.getAttribute("data-length");
-let intTotallenght = parseInt(totalLenght, 10);
+// let totalLenght = inputVal.getAttribute("data-length");
+// let intTotallenght = parseInt(totalLenght, 10);
 
-inputVal.oninput = function() {
-  if (inputVal.value.length === intTotallenght) {
-    inputVal.classList.remove("invalid");
-    inputVal.classList.add("valid");
+// inputVal.oninput = function() {
+//   if (inputVal.value.length === intTotallenght) {
+//     inputVal.classList.remove("invalid");
+//     inputVal.classList.add("valid");
+//   }
+//   if (inputVal.value.length === 0) {
+//     inputVal.classList.remove("valid");
+//     inputVal.classList.remove("invalid");
+//   }
+//   if (inputVal.value.length !== intTotallenght && inputVal.value.length !== 0) {
+//     inputVal.classList.add("invalid");
+//   }
+// };
+
+const input = document.querySelector("#validation-input");
+
+input.addEventListener("blur", (event) => {
+  if (!event.currentTarget.value.length) {
+    input.className = "";
+  } else if (
+    event.currentTarget.value.length == input.getAttribute("data-length")
+  ) {
+    input.className = "valid";
+  } else {
+    input.className = "invalid";
   }
-  if (inputVal.value.length === 0) {
-    inputVal.classList.remove("valid");
-    inputVal.classList.remove("invalid");
-  }
-  if (inputVal.value.length !== intTotallenght && inputVal.value.length !== 0) {
-    inputVal.classList.add("invalid");
-  }
-};
+});
