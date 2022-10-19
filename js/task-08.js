@@ -17,9 +17,10 @@ function onFormSubmit(event) {
   const formData = new FormData(event.currentTarget);
   const email = event.currentTarget.elements.email.value;
   const password = event.currentTarget.elements.password.value;
-  if (email.length && password.length) {
-    formData.forEach((value, name) => {
-      console.log(`${name} : ${value}`);
+  if (email && password) {
+      formData.forEach((value, name) => {
+          obj[value] = name
+      console.log(obj);
     });
     form.reset();
   } else {
